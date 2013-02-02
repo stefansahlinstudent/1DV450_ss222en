@@ -1,0 +1,8 @@
+<h1>Alla projekt</h1>
+
+<% @projects.each do |project| %>
+<!--vart gar den har andra variablen, project? Ska ga till den nya-->
+<%= link_to "skapa nytt projekt", project %>	
+	<%= link_to project.name, project %>
+	<br>
+<%end %>
