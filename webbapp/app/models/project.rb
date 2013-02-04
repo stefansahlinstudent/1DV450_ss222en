@@ -6,6 +6,6 @@ class Project < ActiveRecord::Base
 	validates_presence_of :name, :message => "No name in field";
 	
 	#has_and_belongs_to_many :users
-	#Den här är mest till för validering. 
+	#A file for validation and for helping the migration classes
 	#Rails Console är motsvarande samma sak som man skriver i controllerklassen. 
 end
