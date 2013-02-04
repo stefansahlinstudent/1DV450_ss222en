@@ -7,11 +7,17 @@ class ProjectsController < ApplicationController
 	
 	def show 
 		project = Project.find(params[:id])
+		@project = project
 		@projectName = project.name
 		@projectDescription = project.description
+		@pruser = project.user
+		@mgproject = project.minigoal_id
 	end
 	
-	def delete
+	def destroy
+		@crap = Project.find(params[:id])
+		@crap.destroy
+		redirect_to projects_url
 		#lite kod
 	end
 	
