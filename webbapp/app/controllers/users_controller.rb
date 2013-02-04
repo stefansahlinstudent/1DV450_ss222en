@@ -3,6 +3,10 @@ class UsersController < ApplicationController
 		@users = User.all
 	end
 	
+	def new
+		@user = User.new
+	end
+	
 	def show 
 		user = User.find(params[:id])
 		@userfname = user.first_name
@@ -13,9 +17,7 @@ class UsersController < ApplicationController
 		#@userDescription = user.description
 	end
 	
-	def new
-		@user = User.new
-	end
+	
 	
 	def create
 		@user = User.find(params[:id])
@@ -32,7 +34,7 @@ class UsersController < ApplicationController
 	end
 	
 	def destroy
-		@user = User.find(params[id])
+		@user = User.find(params[:id])
 		@user.destroy
 		redirect_to users_path
 	end

@@ -1,7 +1,8 @@
 <h1>All users</h1>
 <!-- Link to create new user and to create new project-->
 <!-- Cant get to the create_users_path controller -->
-<%= link_to "Create new user", users_path %>
+<%= link_to "Create new user", new_user_path %>
+<br>
 <% @users.each do |user| %>
 <%= link_to user.first_name, user %>
 	<br>

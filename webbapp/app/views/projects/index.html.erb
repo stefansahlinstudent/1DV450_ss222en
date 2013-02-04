@@ -1,10 +1,12 @@
 <h1>Alla projekt</h1>
-<%= link_to "Make new user", users_path %>
+<%= link_to "Create new project", new_project_path %>
+<br>
 
 
 <% @projects.each do |project| %>
-<!--vart gar den har andra variablen, project? Ska ga till den nya-->
-<%= link_to "skapa nytt projekt", project %>	
+<!--vart gar den har andra variablen, project? Ska ga till den nya-->	
 	<%= link_to project.name, project %>
 	<br>
 <%end %>
+
+<%= link_to "See all projects", projects_path %>

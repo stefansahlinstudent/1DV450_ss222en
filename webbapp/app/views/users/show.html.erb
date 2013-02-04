@@ -5,7 +5,10 @@
 <p>Email of the user is: <%= @email %></p>
 <!-- Can't reach the table where I get the projects from specific user-->
 
-<%= link_to "Create new user", users_path %>
+<%= link_to "Create New Project", new_project_path %>
+<br>
+<%= link_to "See all users", users_path %>
 
-<!-- Get a link to user.projects-->
+<p><%= link_to "Delete this user", @user, confirm: "You're about to delete this project", method: :delete%></p>
+<!-- For every User, get a link where you can see its projects-->
 
