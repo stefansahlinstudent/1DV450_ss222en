@@ -1,0 +1,25 @@
+<h1>Steffos Ruby application</h1>
+<%= link_to "Create new user", new_user_path %>
+<br>
+
+<%= link_to "Go to the users page", users_path %>
+<br>
+<%= form_for @user do |f| %>
+
+	<div class="text_field">
+		<%= f.label :email %>
+		<%= f.text_field :email %>
+	</div>
+	<div class="text_field">
+		<%= f.label :password %>
+		<%= f.text_area :password %>
+	</div>
+	<div class="submit">
+		<%= f.submit "Login" %>
+	</div>
+	
+<% end %>
+
+
+
+<!-- Login form should be here -->

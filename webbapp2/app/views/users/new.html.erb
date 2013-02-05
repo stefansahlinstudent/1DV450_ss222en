@@ -1,4 +1,17 @@
 <h1>Create User</h1>
+
+<% if @user.errors.any? %>
+	<div id="error_messages">
+	
+	<ul>
+	<% @user.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+	<% end %>
+	</ul>
+	</div>
+<% end %>	
+
+
 <%= form_for @user do |f| %>
 	<div class="text_field">
 		<%= f.label :first_name %>
@@ -12,6 +25,14 @@
 		<%= f.label :email %>
 		<%= f.text_field :email %>
 	</div>
+	<div class="text_field">
+		<%= f.label :password %>
+		<%= f.text_field :password %>
+	</div>
+	<div class="submit">
+		<%= f.submit "create user" %>
+	</div>
+	
 <% end %>
 
 <p><%=link_to "Back to users", users_path %></p>

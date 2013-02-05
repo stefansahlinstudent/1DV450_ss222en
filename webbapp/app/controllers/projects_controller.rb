@@ -14,6 +14,7 @@ class ProjectsController < ApplicationController
 		@mgproject = project.minigoal_id
 	end
 	
+	
 	def destroy
 		@crap = Project.find(params[:id])
 		@crap.destroy

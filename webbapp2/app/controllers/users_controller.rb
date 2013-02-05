@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 	
 	def new
 		@user = User.new
+		#get the params from the different fields. 
 	end
 	
 	def show 
@@ -21,18 +22,26 @@ class UsersController < ApplicationController
 	
 	
 	def create
-		@user = User.find(params[:user])
+	    
+		@user = User.new(params[:user])
 		if @user.save
+			redirect_to users_path
 			#redirect to the new user
 		else
+			render :action => "new"
 			#Write error message
 		end
 		
 	end
 	
 	def update
-		@user = User.find(params[:id])
+		@user = User.find(params[:id])	
+	end
 	
+	def edit
+		@user = User.find(params[:id])	
+		#<%= link_to "Edit member", edit_user_path %>
+		#The link to Use in index view
 	end
 	
 	def destroy

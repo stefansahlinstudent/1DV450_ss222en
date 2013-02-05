@@ -11,10 +11,17 @@ class ProjectsController < ApplicationController
 		@projectName = project.name
 		@projectDescription = project.description
 		@prusers = project.users
-		@prminigoals = project.minigoals
+		@prminigoals = project.minigoals				
+	end
+	
+	def create
+		@project = Project.new(params[:project])
 		
-		
-		
+		if @project.save
+		redirect_to users_path
+		else 
+		render :action => "new"
+		end
 	end
 	
 	def destroy
