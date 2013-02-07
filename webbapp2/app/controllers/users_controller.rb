@@ -35,11 +35,18 @@ class UsersController < ApplicationController
 	end
 	
 	def update
+	#Check if this code is working
 		@user = User.find(params[:id])	
+		if @user.update_attributes(params[:user])
+			redirect_to users_path
+		else
+			render :action => "edit"
+		end
 	end
 	
 	def edit
 		@user = User.find(params[:id])	
+		
 		#<%= link_to "Edit member", edit_user_path %>
 		#The link to Use in index view
 	end

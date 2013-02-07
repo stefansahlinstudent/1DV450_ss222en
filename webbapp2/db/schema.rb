@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(:version => 20130204225642) do
 
   create_table "minigoals", :force => true do |t|
     t.integer  "project_id"
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

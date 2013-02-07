@@ -11,9 +11,14 @@ Webbapp2::Application.routes.draw do
   # This route can be invoked with purchase_url(:id => product.id)
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
-    resources :projects
+  
+    #match '/first/login' => 'first#login', as => :first_login 
+	
+	resources :projects
 	resources :users
 	resources :first
+	resources :logins
+	resources :minigoals
 
   # Sample resource route with options:
   #   resources :products do

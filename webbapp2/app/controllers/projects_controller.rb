@@ -35,6 +35,10 @@ class ProjectsController < ApplicationController
 		@project = Project.new
 	end
 	
+	def edit
+		#code goes here
+	end	
+	
 	def update
 		#lite kod
 	end

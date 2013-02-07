@@ -4,19 +4,15 @@
 
 <%= link_to "Go to the users page", users_path %>
 <br>
-<%= form_for @user do |f| %>
+<%= form_tag(users_create_path :method => "post", :class => "myForm") do%>
 
-	<div class="text_field">
-		<%= f.label :email %>
-		<%= f.text_field :email %>
-	</div>
-	<div class="text_field">
-		<%= f.label :password %>
-		<%= f.text_area :password %>
-	</div>
-	<div class="submit">
-		<%= f.submit "Login" %>
-	</div>
+	<%= label_tag(:email, "Email:") %>
+	<%= text_field_tag(:email) %>
+	
+	<%= label_tag(:password, "Password:") %>
+	<%= text_field_tag(:password) %>
+
+	<%= submit_tag("Login") %>
 	
 <% end %>
 

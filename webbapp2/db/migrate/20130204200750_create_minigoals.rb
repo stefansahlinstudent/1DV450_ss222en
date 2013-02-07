@@ -1,8 +1,9 @@
 class CreateMinigoals < ActiveRecord::Migration
   def change
     create_table :minigoals do |t|
-	  t.string :name
+	  
 	  t.references :project
+	  t.string :name
       t.timestamps
     end
   end

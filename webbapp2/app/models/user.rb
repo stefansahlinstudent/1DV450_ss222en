@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
 	
 	validates :password, 
 			  :presence => {:message => "Password seems to be missing"},
-			  :length => {:minimum => 5, :message => "Password must be at least 5 characters"}
+			  :length => {:minimum => 5, :maximum => 30, :message => "Password must be at least 5 and maximum 30 characters"}
 			  #Get a maximum length for password to!
 			  
 	
