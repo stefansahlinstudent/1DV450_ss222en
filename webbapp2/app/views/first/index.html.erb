@@ -4,7 +4,8 @@
 
 <%= link_to "Go to the users page", users_path %>
 <br>
-<%= form_tag(users_create_path :method => "post", :class => "myForm") do%>
+<%= form_tag(first_login_path :method => "post", :class => "myForm") do%>
+<!-- Access to action in form_tag check it. --
 
 	<%= label_tag(:email, "Email:") %>
 	<%= text_field_tag(:email) %>
