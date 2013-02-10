@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration
 		t.string "first_name", :limit => 20
 		t.string "last_name", :limit => 40
 		t.string "email", :default => "", :null => false
-		#t.string "password", :default => "", :null => false
+		t.string "password", :default => "", :null => false
       t.timestamps
     end
   end

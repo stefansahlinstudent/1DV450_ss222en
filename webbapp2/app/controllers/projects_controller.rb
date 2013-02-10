@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
 		@projectName = project.name
 		@projectDescription = project.description
 		@prusers = project.users
-		@prminigoals = project.minigoals				
+		@prminigoals = project.minigoalid				
 	end
 	
 	def create
@@ -36,10 +36,17 @@ class ProjectsController < ApplicationController
 	end
 	
 	def edit
+		@project = Project.find(params[:id])
 		#code goes here
 	end	
 	
 	def update
 		#lite kod
+		@project = Project.find(params[:id])	
+		if @project.update_attributes(params[:user])
+			redirect_to projects_path
+		else
+			render :action => "edit"
+		end
 	end
 end

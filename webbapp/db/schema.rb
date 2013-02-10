@@ -11,28 +11,6 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130131225109) do
-
-  create_table "minigoals", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "projects", :force => true do |t|
-    t.integer  "minigoal_id"
-    t.string   "name"
-    t.string   "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "users", :force => true do |t|
-    t.string   "first_name", :limit => 20
-    t.string   "last_name",  :limit => 40
-    t.string   "email",                    :default => "", :null => false
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
-  end
+ActiveRecord::Schema.define(:version => 0) do
 
 end

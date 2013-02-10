@@ -1,0 +1,33 @@
+<h1>Create Project</h1>
+
+<% if @project.errors.any? %>
+	<div id="error_messages">
+	
+	<ul>
+	<% @project.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+	<% end %>
+	</ul>
+	</div>
+<% end %>	
+
+<%= form_for @project do |f| %>
+	<div class="text_field">
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</div>
+	<div class="text_area">
+		<%= f.label :description %>
+		<%= f.text_area :description %>
+	</div>
+	<div class="select_box">
+		<%= f.label :minigoal_id %>
+		<%= f.select :minigoal_id, options_from_collection_for_select(Minigoal.all, :id, :name) %>	
+	</div>
+	<div class="submit">
+		<%= f.submit "create project" %>
+	</div>
+	
+<% end %>
+
+<p><%=link_to "Back to users", users_path %></p>
