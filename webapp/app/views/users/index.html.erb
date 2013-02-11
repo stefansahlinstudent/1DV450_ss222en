@@ -16,5 +16,17 @@
 
 <!-- This link leeds to the wrong place -->
 <%= link_to "Go home", users_path %>
+<br>
+
+<%= form_tag(users_search_path :method => "post", :action => "search", :class => "searchForm") do%>
+<!-- Access to action in form_tag check it. -->
+
+	<%= label_tag(:search, "Search:") %>
+	<%= text_field_tag(:search) %>
+	
+
+	<%= submit_tag("Search") %>
+	
+<% end %>
 
 

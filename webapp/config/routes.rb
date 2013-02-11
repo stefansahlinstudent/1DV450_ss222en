@@ -12,6 +12,7 @@ Webapp::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   match '/first/login' => 'first#login', :as => :first_login 
+  match '/users/search' => 'users#search', :as => :users_search 
 	
 	resources :projects
 	resources :users

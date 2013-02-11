@@ -1,5 +1,5 @@
 <h1> Specific minigoal page </h1>
-<p>Name: <%= @minigoal.name %><%= link_to " Edit", new_minigoal_path %></p>
+<p>Name: <%= @minigoal.name %><%= link_to " Edit", edit_minigoal_path %></p>
 
 <p>Has the minigoal(s): <%= @minigoal.status_id %></p>
 <p><%= link_to "Delete this minigoal", @minigoal, confirm: "You're about to delete this minigoal", method: :delete%></p>

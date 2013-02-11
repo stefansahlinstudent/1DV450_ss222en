@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 	
 	def search
 		#Search function should be here.
+		#@searchPhrase = User.find(params[:id])
 	end
 	
 	def create

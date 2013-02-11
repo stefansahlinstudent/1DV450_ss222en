@@ -3,6 +3,7 @@
 <%= @minigoals.each do |minigoal| %>
 	<%= link_to minigoal.name, minigoal %>
 	<%= link_to "Edit minigoal", edit_minigoal_path(minigoal) %> <!-- Should edit the minigoal.status instead-->
+	<%= minigoal.status_id%> <!-- Change this one to status.name-->
 	<br>
 <% end %>
 <p>Minigoals testing</p>

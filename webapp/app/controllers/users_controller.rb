@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
 	def index
+		#if  session[:loggedIn] = true
+		#	redirect_to client_app_path
+		#else
+		#	redirect_to ''
+	    #end
 		@users = User.all
 	end
 	
@@ -14,12 +19,15 @@ class UsersController < ApplicationController
 		@userlname = user.last_name
 		@email = user.email
 		@uprojects = user.projects
-		
-		#@userDescription = user.description
 	end
 	
+	
 	def search
-		#Search function should be here.
+		#@searchPhrase = User.find(params[:search])
+		#Check the @searchPhrase with the database, to see if it exists. 
+		#Present an array with links to the different users. 
+		#Users.where("project_name LIKE ?", %@searchPhrase%).select("first_name, last_name").all
+		
 	end
 	
 	def create

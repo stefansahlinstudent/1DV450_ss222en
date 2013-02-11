@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 			  
 	validates :email, 
 			  :presence => {:message => "Email seems to be missing"}
-			  #validates_format_of :email, :with => %r\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/, :on => :create
+			  #validates_format_of :email, :with => %r\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/, :on => :create, {:message =>"Invalid email"}
 			  #Try to get the format right
 	
 	validates :password, 
