@@ -20,11 +20,10 @@
 
 <%= form_tag(users_search_path :method => "post", :action => "search", :class => "searchForm") do%>
 <!-- Access to action in form_tag check it. -->
-
+	<p> Search among the users of this application <p> <br>
 	<%= label_tag(:search, "Search:") %>
 	<%= text_field_tag(:search) %>
 	
-
 	<%= submit_tag("Search") %>
 	
 <% end %>

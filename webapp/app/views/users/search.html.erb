@@ -1,1 +1,17 @@
-<p>make search here</p>
+<h1>The results of your search</h1>
+<p> Your search phrase was:<%= @searchPhrase %> </p>
+
+
+<%= @all %>
+<%= @firstname %>
+
+
+<%= @size %>
+<br>
+	<% @users.each do |user| %>
+	<%= link_to user.first_name, user %>	
+		<%= link_to "Edit user", edit_user_path(user) %>
+		<br>	
+	<%end %>
+</div>
+<br>

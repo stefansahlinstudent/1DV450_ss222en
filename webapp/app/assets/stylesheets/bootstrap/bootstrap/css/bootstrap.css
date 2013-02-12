@@ -6037,3 +6037,35 @@ a.badge:hover {
 .affix {
   position: fixed;
 }
+
+/* Stefans own styles */
+.users_links a{
+	color: green;
+}
+
+.Title {
+	background: black;
+	color: white;
+}
+
+.footer {
+	background: black;
+	color: white;
+}
+
+.container {
+	width: 80%;
+	border: 1 px solid black;
+}
+
+#notauser {
+	background: grey;
+	border: 1px solid black;
+	width: 250px;
+	
+}
+
+#notauser a{
+	color: white;
+}
+

@@ -1,12 +1,12 @@
 <h1>Minigoals for this project</h1>
 
-<%= @minigoals.each do |minigoal| %>
+<% @minigoals.each do |minigoal| %>
 	<%= link_to minigoal.name, minigoal %>
-	<%= link_to "Edit minigoal", edit_minigoal_path(minigoal) %> <!-- Should edit the minigoal.status instead-->
-	<%= minigoal.status_id%> <!-- Change this one to status.name-->
+	<%= link_to "Edit minigoal", edit_minigoal_path(minigoal) %> 
+	
 	<br>
 <% end %>
-<p>Minigoals testing</p>
+
 <!-- Comes out a lot of crap information that I do not want-->
 
 <%= link_to "Create new minigoal", new_minigoal_path %>

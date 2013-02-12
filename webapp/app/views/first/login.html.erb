@@ -1,3 +1,4 @@
+
 <h1>Welcome! <%= @firstName%> </h1>
 <%= @email %>
 <br>
@@ -8,7 +9,14 @@
 
 <%= form_tag(first_logout_path :method => "post", :action => "logout", :class => "myLogout") do%>
 <!-- Access to action in form_tag check it. -->
-
 	<%= submit_tag("Logout") %>
-	
 <% end %>
+<%= @sessionLogin %>
+<%= @sessionId %>
+
+<%= link_to "Go to users page", users_path %>
+<!--  Should go to the users page instead -->
+
+
+
+

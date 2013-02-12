@@ -12,8 +12,13 @@ class User < ActiveRecord::Base
 			  
 	validates :email, 
 			  :presence => {:message => "Email seems to be missing"}
-			  #validates_format_of :email, :with => %r\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/, :on => :create, {:message =>"Invalid email"}
+			  
+	validates :email, :uniqueness => true		  
 			  #Try to get the format right
+	validates :email,  :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/, :message =>"Invalid email"}
+	
+	#validates_uniqueness_of :email { :message => "already taken"}
+	#validates :email, {:uniqueness => true, :message => "Sorry to late, email already taken"}
 	
 	validates :password, 
 			  :presence => {:message => "Password seems to be missing"},

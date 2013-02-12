@@ -1,11 +1,12 @@
 class FirstController < ApplicationController
 	def index
 		#@login = Project.all
-		
+		@sessionLogin = session[:loggedIn]
+		@sessionId = session[:userId]
 	end
 	
 	def login
-		flash[:notice] = "Invalid Username or Password"
+		
 		@email = params[:email]
 		@password = params[:password]
 		@user = User.where("email = ? AND password = ?", @email, @password)
@@ -16,11 +17,17 @@ class FirstController < ApplicationController
 			@firstName = @user.first.first_name
 			session[:userId] = @something
 			session[:loggedIn] = true
+			
+			@sessionLogin = session[:loggedIn]
+			@sessionId = session[:userId]
+			#redirect_to users_path
 			# go to the users home page and put a logoutbutton there
 			#redirect_to(:action => 'index')	
 		else 
 			#Stay at the same page
-			redirect_to(:action => 'index')	
+			
+			redirect_to(:action => 'index')
+			
 		end
 		
 	end
@@ -30,6 +37,7 @@ class FirstController < ApplicationController
 		session[:userId] = nil
 		session[:loggedIn] = false
 		redirect_to(:action => 'index')
+		
 	end
 	
 	def test

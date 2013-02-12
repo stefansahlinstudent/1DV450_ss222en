@@ -1,11 +1,13 @@
 <h1>Information about the user</h1>
-
-
-<p>First Name of the user is: <%= @userfname %></p>
-<p>Last Name of the user is: <%= @userlname %></p>
-<p>Email of the user is: <%= @email %></p>
-<!-- <p>The users projects: <%= @uprojects %></p> -->
-<!-- Can't reach the table where I get the projects from specific user-->
+<% if flash[:notice] %>
+ <%= link_to "Back to users", users_path %>
+<p><%= flash[:notice] %></p>
+<% else %>
+	<p>First Name of the user is: <%= @userfname %></p>
+	<p>Last Name of the user is: <%= @userlname %></p>
+	<p>Email of the user is: <%= @email %></p>
+	<!-- <p>The users projects: <%= @uprojects %></p> -->
+	<!-- Can't reach the table where I get the projects from specific user-->
 
 
 <br>
@@ -16,11 +18,14 @@
 
 
 <!-- Path leads to the wrong place-->
+
 <h3>Projects made by this user</h3>
 <% @uprojects.each do |uproject| %>
 	<%= link_to uproject.name, project_path(uproject) %> <br>
 	<!-- If there are no project, put up some kind of message for that-->
 <% end %>
+<% end %>
+
 
 
 
