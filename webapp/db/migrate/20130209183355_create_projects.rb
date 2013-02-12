@@ -4,7 +4,7 @@ class CreateProjects < ActiveRecord::Migration
 		
 	  t.string "name", :limit => 20	
 	  t.text :description 
-	  t.references :minigoal
+	  
       t.timestamps
     end
   end

@@ -5,23 +5,35 @@ class FirstController < ApplicationController
 	end
 	
 	def login
-		#session id here
-		#Go to this action from the form in index
-		# if logged in is correct
-		#session[:loggedIn] = true
-		#session [:userName] = @username
-		#session [:userId] = nil
-		#Redirect to the users show page on UserController
-		#http://orion.lnu.se/pub/education/course/1DV450/VT13/sessions/F05.html#13
+		flash[:notice] = "Invalid Username or Password"
+		@email = params[:email]
+		@password = params[:password]
+		@user = User.where("email = ? AND password = ?", @email, @password)
 		
-		#else render the same page, FirstController#index
+		
+		if @user.size > 0 
+			@something = @user.first.id
+			@firstName = @user.first.first_name
+			session[:userId] = @something
+			session[:loggedIn] = true
+			# go to the users home page and put a logoutbutton there
+			#redirect_to(:action => 'index')	
+		else 
+			#Stay at the same page
+			redirect_to(:action => 'index')	
+		end
+		
 	end
 	
 	def logout
 		#session id deleted here
-		#session[:username] = nil
-		#session[:loggedIn] = false
-		#redirect_to(:action => 'index')
+		session[:userId] = nil
+		session[:loggedIn] = false
+		redirect_to(:action => 'index')
+	end
+	
+	def test
+	
 	end
 	
 end

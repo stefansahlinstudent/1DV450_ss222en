@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 	end
 	
 	def show 
+		# How to ask the question if page is available
 		user = User.find(params[:id])
 		@userfname = user.first_name
 		@userlname = user.last_name
@@ -23,10 +24,11 @@ class UsersController < ApplicationController
 	
 	
 	def search
-		#@searchPhrase = User.find(params[:search])
+		#@searchPhrase = params[:search] 
+		#@users = Users.where("project_name LIKE ?", %@searchPhrase%).select("first_name, last_name").all
 		#Check the @searchPhrase with the database, to see if it exists. 
-		#Present an array with links to the different users. 
-		#Users.where("project_name LIKE ?", %@searchPhrase%).select("first_name, last_name").all
+		
+		
 		
 	end
 	
