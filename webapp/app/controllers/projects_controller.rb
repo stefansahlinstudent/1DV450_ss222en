@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
 	def show 
 		project = Project.find(params[:id])
 		#@user = SessionId...
+		@prusers = project.users
 		@project = project
 		@pMinigoals = @project.minigoals
 		@projectName = project.name

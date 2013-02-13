@@ -6058,6 +6058,10 @@ a.badge:hover {
 	border: 1 px solid black;
 }
 
+.errorlist{
+	list-style:none;
+}
+
 #notauser {
 	background: grey;
 	border: 1px solid black;

@@ -1,16 +1,23 @@
-<h1>All projects </h1>
-<%= link_to "Create new project", new_project_path %>
-<br>
-<br>
+<div class="container">
+	<div class="Title">
+		<h1>All projects </h1>
+	</div>
+	<%= link_to "Create new project", new_project_path %>
+	<br>
+	<br>
 
-<div class="projects_links">
-	<!-- Replace this with a table -->
-	<% @projects.each do |project| %>
-	<!--vart gar den har andra variablen, project? Ska ga till den nya-->	
-		<%= link_to project.name, project %>
-		<%= link_to "Edit project", edit_project_path(project) %>
-		<br>
-	<%end %>
+	<div class="projects_links">
+		<!-- Replace this with a table -->
+		<table>
+		<% @projects.each do |project| %>
+		<tr>
+		<!--Try to get a link to the projects user within the table as well-->	
+			<td><%= link_to project.name, project %></td>
+			<td><%= link_to "Edit project", edit_project_path(project) %></td>
+		</tr>	
+		<%end %>
+		</table>
+	</div>
+	<br>
+	<%= link_to "Back to the users page", users_path %>
 </div>
-<br>
-<%= link_to "Back to the users page", users_path %>

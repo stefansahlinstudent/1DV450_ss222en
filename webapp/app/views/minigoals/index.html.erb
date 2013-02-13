@@ -1,12 +1,20 @@
-<h1>Minigoals for this project</h1>
+<div class="container">
+	<div class="Title">
+		<h1>Minigoals for this project</h1>
+	</div>
 
-<% @minigoals.each do |minigoal| %>
-	<%= link_to minigoal.name, minigoal %>
-	<%= link_to "Edit minigoal", edit_minigoal_path(minigoal) %> 
-	
+	<table>
+		<% @minigoals.each do |minigoal| %>
+			<tr>
+				<td><%= link_to minigoal.name, minigoal %></td>
+				<td><%= link_to "Edit", edit_minigoal_path(minigoal) %></td>	
+				<td><%= link_to "Delete", minigoal, confirm: "You're about to delete this minigoal", method: :delete%></td>
+			</tr>	
+		<% end %>
+	<table>
 	<br>
-<% end %>
+	<br>
+	<!-- Comes out a lot of crap information that I do not want-->
 
-<!-- Comes out a lot of crap information that I do not want-->
-
-<%= link_to "Create new minigoal", new_minigoal_path %>
+	<%= link_to "Create new minigoal", new_minigoal_path %>
+<div>

@@ -6,8 +6,9 @@ class MinigoalsController < ApplicationController
 	end
 	
 	def show
-		@minigoal = Minigoal.find(params[:id])	
-		
+		@minigoal = Minigoal.find(params[:id])
+		@minigoalProject = @minigoal.project_id
+		@minigoalStatus = @minigoal.status_id #Here you should instead find the name of the status where the minigoalStatus is ...
 	end
 	
 	def new
@@ -18,11 +19,9 @@ class MinigoalsController < ApplicationController
 	    
 		@minigoal = Minigoal.new(params[:minigoal])
 		if @minigoal.save
-			redirect_to minigoals_path
-			#redirect to the new user
+			redirect_to minigoals_path			
 		else
 			render :action => "new"
-			#Write error message
 		end
 		
 	end

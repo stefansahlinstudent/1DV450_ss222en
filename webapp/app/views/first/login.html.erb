@@ -1,21 +1,24 @@
+<div class="container">
+	<div class="Title">
+		<h1>Welcome! <%= @firstName%> </h1>
+	</div>
+	<%= @email %>
+	<br>
+	<%= @password %>
+	<br>
+	<%= @user.size %>
+	<%= @something %>
 
-<h1>Welcome! <%= @firstName%> </h1>
-<%= @email %>
-<br>
-<%= @password %>
-<br>
-<%= @user.size %>
-<%= @something %>
+	<%= form_tag(first_logout_path :method => "post", :action => "logout", :class => "myLogout") do%>
+	<!-- Access to action in form_tag check it. -->
+		<%= submit_tag("Logout") %>
+	<% end %>
+	<!--<%= @sessionLogin %>-->
+	<!--<%= @sessionId %>-->
 
-<%= form_tag(first_logout_path :method => "post", :action => "logout", :class => "myLogout") do%>
-<!-- Access to action in form_tag check it. -->
-	<%= submit_tag("Logout") %>
-<% end %>
-<%= @sessionLogin %>
-<%= @sessionId %>
-
-<%= link_to "Go to users page", users_path %>
-<!--  Should go to the users page instead -->
+	<%= link_to "Go to users page", users_path %>
+	<!--  Should go to the users own page instead -->
+</div>
 
 
 
