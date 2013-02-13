@@ -1,6 +1,5 @@
 class FirstController < ApplicationController
 	def index
-		#@login = Project.all
 		@sessionLogin = session[:loggedIn]
 		@sessionId = session[:userId]
 	end

@@ -9,12 +9,14 @@ class UsersController < ApplicationController
 	end
 	
 	def new		
-			@user = User.new	 
+		@user = User.new	 
 	end
 	
 	def show 
 	    if session[:loggedIn] == true			
-			user = User.where("id = ?", params[:id])		
+			user = User.where("id = ?", params[:id])
+			@sessionId = session[:userId] 
+			@userId = user.first.id	
 			if !user.empty?
 				@userfname = user.first.first_name
 				@userlname = user.first.last_name
@@ -53,7 +55,6 @@ class UsersController < ApplicationController
 	end
 	
 	def update
-	#Check if this code is working
 		@user = User.find(params[:id])	
 		if @user.update_attributes(params[:user])
 			redirect_to users_path
@@ -64,16 +65,22 @@ class UsersController < ApplicationController
 	
 	def edit
 		if session[:loggedIn] == true	
-		@user = User.find(params[:id])	
+			@sessionId = session[:userId] 
+			@user = User.find(params[:id])
+			@userId = @user.id	
 		else 
 			flash[:notice] = "You are not logged in"
 		end	
 	end
 	
 	def destroy
+		@sessionId = session[:userId] 
 		@user = User.find(params[:id])
-		@user.destroy
-		redirect_to users_path
+		@userId = @user.id
+		if (@userId == @sessionId)
+			@user.destroy
+		end
+		redirect_to first_logout_path
 	end
 	
 end

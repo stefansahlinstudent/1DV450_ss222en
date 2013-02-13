@@ -35,7 +35,6 @@ class ProjectsController < ApplicationController
 		@crap = Project.find(params[:id])
 		@crap.destroy
 		redirect_to projects_url
-		#lite kod
 	end
 	
 	def new
