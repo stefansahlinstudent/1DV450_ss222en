@@ -6062,6 +6062,15 @@ a.badge:hover {
 	list-style:none;
 }
 
+.searchForm{
+	background:beige;
+	border: 1px solid grey;
+}
+
+.error{
+	color: red;
+}
+
 #notauser {
 	background: grey;
 	border: 1px solid black;
@@ -6072,4 +6081,10 @@ a.badge:hover {
 #notauser a{
 	color: white;
 }
+
+#mgBox{
+	background: silver;
+	padding: 10px;
+}
+
 

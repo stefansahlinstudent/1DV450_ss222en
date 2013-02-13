@@ -1,21 +1,34 @@
-<h1> This is where you create a new minigoal </h1>
-<!--Form goes here, containing a name and a status id -->
+<div class="container">
+	<div class="Title">
+		<h1> This is where you create a new minigoal </h1>
+	</div>
+	<% if flash[:notice] %>
+		<h2 class="error"><%= flash[:notice] %></h2>
+		<%= link_to "Back to log in page! ", first_logout_path %>		
+	<% else %>	
+	
 
-<%= form_for @minigoal do |f| %>
-	<div class="text_field">
-		<%= f.label :name %>
-		<%= f.text_field :name %>
-	</div>
-	
-	<div class="select_box">
-		<%= f.label :status_id %>
-		<%= f.select :status_id, options_from_collection_for_select(Status.all, :id, :name) %>	
-	</div>
-	
-	<div class="submit">
-		<%= f.submit "Create minigoal" %>
-	</div>
-<% end %>
-<!-- Might be a good idea to put in status in a select box-->
-<!-- Get an error here based on the wrong number of arguments-->
+	<%= form_for @minigoal do |f| %>
+		<div class="text_field">
+			<%= f.label :name %>
+			<%= f.text_field :name %>
+		</div>
+		
+		<div class="select_box">
+			<%= f.label :status_id %>
+			<%= f.select :status_id, options_from_collection_for_select(Status.all, :id, :name) %>	
+		</div>
+		
+		<div class="submit">
+			<%= f.submit "Create minigoal" %>
+		</div>
+	<br>
+	<br>
+	<%= form_tag(first_logout_path :method => "post", :action => "logout", :class => "myLogout") do%>
+		<%= submit_tag("Logout") %>
+	<% end %>
+	<% end %>
+	<% end %>
+	<!-- Might be a good idea to put in status in a select box-->
+</div>
 

@@ -1,22 +1,37 @@
-<h1>Edit minigoal</h1>
-<%= link_to "Back to Minigoals", minigoals_path(@minigoal) %>
-<%= @minigoal.name %>
-<%= @minigoal.status_id %>
+<div class="container">
+	<div class="Title">
+		<h1>Edit minigoal</h1>
+	</div>
+	<% if flash[:notice] %>
+		<h2 class="error"><%= flash[:notice] %></h2>
+		<%= link_to "Back to log in page! ", first_logout_path %>		
+	<% else %>	
+	<p><%= link_to "Back to Minigoals", minigoals_path(@minigoal) %></p>
+	<p><%= @minigoal.name %></p>
+	<p><%= @minigoal.status_id %></p>
 
-<%= form_for @minigoal do |f| %>
-	<div class="text_field">
-		<%= f.label :name %>
-		<%= f.text_field :name %>
-	</div>
-	<div class="text_field">
-		<%= f.label :status_id %>
-		<%= f.text_field :status_id %>
-	</div>
+	<%= form_for @minigoal do |f| %>
+		<div class="text_field">
+			<%= f.label :name %>
+			<%= f.text_field :name %>
+		</div>
+		<div class="text_field">
+			<%= f.label :status_id %>
+			<%= f.text_field :status_id %>
+		</div>
+		
+		<div class="submit">
+			<%= f.submit "Save changes" %>
+		</div>
+	<br>
+	<br>
+	<%= form_tag(first_logout_path :method => "post", :action => "logout", :class => "myLogout") do%>
+		<%= submit_tag("Logout") %>
+	<% end %>
 	
-	<div class="submit">
-		<%= f.submit "Save changes" %>
-	</div>
+	<% end %>
+	<% end %>
+	<!-- Change this one so you can see the status instead -->
 	
-<% end %>
-<!-- Change this one so you can see the status instead -->
+</div>
 

@@ -1,18 +1,29 @@
 class MinigoalsController < ApplicationController
 
 	def index
-		@minigoals = Minigoal.all
-		#Get every minigoal from a specific user. 
+		if session[:loggedIn] == true	
+			@minigoals = Minigoal.all		
+		else 
+			flash[:notice] = "You are not logged in"
+		end
 	end
 	
 	def show
-		@minigoal = Minigoal.find(params[:id])
-		@minigoalProject = @minigoal.project_id
-		@minigoalStatus = @minigoal.status_id #Here you should instead find the name of the status where the minigoalStatus is ...
+		if session[:loggedIn] == true	
+			@minigoal = Minigoal.find(params[:id])
+			@minigoalProject = @minigoal.project_id
+			@minigoalStatus = @minigoal.status_id #Here you should instead find the name of the status where the minigoalStatus is ...
+		else 
+			flash[:notice] = "You are not logged in"
+		end
 	end
 	
 	def new
-		@minigoal = Minigoal.new
+		if session[:loggedIn] == true	
+			@minigoal = Minigoal.new
+		else 
+			flash[:notice] = "You are not logged in"
+		end
 	end
 	
 	def create
@@ -21,7 +32,7 @@ class MinigoalsController < ApplicationController
 		if @minigoal.save
 			redirect_to minigoals_path			
 		else
-			render :action => "new"
+		render :action => "new"
 		end
 		
 	end
@@ -33,7 +44,11 @@ class MinigoalsController < ApplicationController
 	end
 	
 	def edit
-		@minigoal = Minigoal.find(params[:id])	
+		if session[:loggedIn] == true	
+			@minigoal = Minigoal.find(params[:id])	
+		else 
+			flash[:notice] = "You are not logged in"
+		end
 	end
 	
 	def update

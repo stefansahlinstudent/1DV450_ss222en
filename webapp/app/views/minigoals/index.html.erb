@@ -2,7 +2,10 @@
 	<div class="Title">
 		<h1>Minigoals for this project</h1>
 	</div>
-
+	<% if flash[:notice] %>
+		<h2 class="error"><%= flash[:notice] %></h2>
+		<%= link_to "Back to log in page! ", first_logout_path %>		
+	<% else %>	
 	<table>
 		<% @minigoals.each do |minigoal| %>
 			<tr>
@@ -13,8 +16,12 @@
 		<% end %>
 	<table>
 	<br>
-	<br>
-	<!-- Comes out a lot of crap information that I do not want-->
 
 	<%= link_to "Create new minigoal", new_minigoal_path %>
+	<br>
+	<br>
+	<%= form_tag(first_logout_path :method => "post", :action => "logout", :class => "myLogout") do%>
+		<%= submit_tag("Logout") %>
+	<% end %>
+	<% end %>
 <div>

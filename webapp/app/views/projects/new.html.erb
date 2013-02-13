@@ -2,6 +2,10 @@
 	<div class="Title">
 		<h1>Create Project</h1>
 	</div>
+	<% if flash[:notice] %>
+		<h2 class="error"><%= flash[:notice] %></h2>
+		<%= link_to "Back to log in page! ", first_logout_path %>		
+	<% else %>
 
 	<% if @project.errors.any? %>
 		<div id="error_messages">
@@ -32,5 +36,8 @@
 
 	<p><%=link_to "Back to users", users_path %></p>
 	<p><%=link_to "Back to projects", projects_path %></p>
-	
+	<%= form_tag(first_logout_path :method => "post", :action => "logout", :class => "myLogout") do%>
+		<%= submit_tag("Logout") %>
+	<% end %>
+	<% end %>
 </div>

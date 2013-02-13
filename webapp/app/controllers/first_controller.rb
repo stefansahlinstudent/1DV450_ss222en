@@ -19,13 +19,8 @@ class FirstController < ApplicationController
 			session[:loggedIn] = true
 			
 			@sessionLogin = session[:loggedIn]
-			@sessionId = session[:userId]
-			#redirect_to users_path
-			# go to the users home page and put a logoutbutton there
-			#redirect_to(:action => 'index')	
-		else 
-			#Stay at the same page
-			
+			@sessionId = session[:userId]	
+		else 		
 			redirect_to(:action => 'index')
 			
 		end
