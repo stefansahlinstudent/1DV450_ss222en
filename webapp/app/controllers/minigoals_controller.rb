@@ -13,6 +13,8 @@ class MinigoalsController < ApplicationController
 			@minigoal = Minigoal.find(params[:id])
 			@minigoalProject = @minigoal.project_id
 			@minigoalStatus = @minigoal.status_id #Here you should instead find the name of the status where the minigoalStatus is ...
+			@status = Status.find_by_id(@minigoalStatus)
+			
 		else 
 			flash[:notice] = "You are not logged in"
 		end

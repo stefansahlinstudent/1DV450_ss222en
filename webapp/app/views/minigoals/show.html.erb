@@ -8,13 +8,13 @@
 	<% else %>	
 	<p>Name: <%= @minigoal.name %>
 	<p>Belongs to the project: <%= @minigoalProject %></p>
-	<p>Has the status: <%= @minigoalStatus %></p>
+	<p>Has the status: <%= @status.name %></p>
 	<p><%= link_to "Edit this minigoal", edit_minigoal_path %></p>
 	<p><%= link_to "Delete this minigoal", @minigoal, confirm: "You're about to delete this minigoal", method: :delete%></p>
 	
 	<%= form_tag(first_logout_path :method => "post", :action => "logout", :class => "myLogout") do%>
-	<!-- Access to action in form_tag check it. -->
 		<%= submit_tag("Logout") %>
 	<% end %>
 	<% end %>
+	
 </div>

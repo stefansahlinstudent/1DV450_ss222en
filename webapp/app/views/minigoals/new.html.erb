@@ -6,9 +6,21 @@
 		<h2 class="error"><%= flash[:notice] %></h2>
 		<%= link_to "Back to log in page! ", first_logout_path %>		
 	<% else %>	
-	
+	<% if @minigoal.errors.any? %>
+		<div id="error_messages">
+		
+		<ul class = "errorlist">
+		<% @minigoal.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+		</ul>
+		</div>
+	<% end %>	
 
 	<%= form_for @minigoal do |f| %>
+	<!-- Should maybe be a drop down list instead -->
+		
+	
 		<div class="text_field">
 			<%= f.label :name %>
 			<%= f.text_field :name %>

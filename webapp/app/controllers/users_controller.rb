@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 	def index
 		if session[:loggedIn] == true
-			@users = User.all
+			@users = User.all || not_found
 			
 		else 
 			flash[:notice] = "You are not logged in"
@@ -9,7 +9,11 @@ class UsersController < ApplicationController
 	end
 	
 	def new		
-		@user = User.new	 
+		if session[:loggedIn] == true
+			@user = User.new	
+		else 
+			flash[:notice] = "You are not logged in"
+		end		
 	end
 	
 	def show 
@@ -45,7 +49,7 @@ class UsersController < ApplicationController
 	end
 	
 	def create	    
-		@user = User.new(params[:user])
+		@user = User.new(params[:user]) 
 		if @user.save
 			redirect_to root_url
 		else
