@@ -19,6 +19,9 @@
 
 	<%= link_to "Create new minigoal", new_minigoal_path %>
 	<br>
+	<%= link_to "Go to the all projects page", projects_path %>
+	<br>
+	<%= link_to "Go to the all users page", users_path %>
 	<br>
 	<%= form_tag(first_logout_path :method => "post", :action => "logout", :class => "myLogout") do%>
 		<%= submit_tag("Logout") %>

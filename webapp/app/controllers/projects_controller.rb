@@ -23,7 +23,10 @@ class ProjectsController < ApplicationController
 	end
 	
 	def create
-		@project = Project.new(params[:project])	
+		@project = Project.new(params[:project])
+		#http://orion.lnu.se/pub/education/course/1DV450/VT13/sessions/F04.html#8
+		#@project.name = params[:name];
+		#@project.description = params[:description];
 		if @project.save
 		redirect_to projects_path
 		else 
@@ -56,7 +59,8 @@ class ProjectsController < ApplicationController
 	def update
 		#lite kod
 		
-		@project = Project.find(params[:id])	
+		@project = Project.find(params[:id])
+		
 		if @project.update_attributes(params[:project])
 			redirect_to projects_path
 		else

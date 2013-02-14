@@ -12,6 +12,7 @@ class MinigoalsController < ApplicationController
 		if session[:loggedIn] == true	
 			@minigoal = Minigoal.find(params[:id])
 			@minigoalProject = @minigoal.project_id
+			@projectName = Project.find_by_id(@minigoalProject)
 			@minigoalStatus = @minigoal.status_id #Here you should instead find the name of the status where the minigoalStatus is ...
 			@status = Status.find_by_id(@minigoalStatus)
 			

@@ -21,14 +21,14 @@
 		<table>
 			<% @pMinigoals.each do |pminigoal| %>
 				<tr>
-				<td><%= pminigoal.name %></td>
-				<td><%= pminigoal.status_id %></td><!-- Change this one to status name-->
+				<td><%= link_to pminigoal.name, minigoal_path(pminigoal) %></td>
+				<!--<td><%= pminigoal.status_id %></td><!-- Change this one to status name-->
 				<tr>	
 			<%end %>
 		</table>
 	</div>
 	<br>
-	<p><%= link_to "Create Minigoal for project", new_minigoal_path %></p>
+	<p><%= link_to "Create Minigoal for project", new_minigoal_path(@project) %></p>
 	<p><%= link_to "Delete this project", @project, confirm: "You're about to delete this project", method: :delete%></p>
 	<p><%=link_to "Create new project", new_project_path %></p>
 	<br>

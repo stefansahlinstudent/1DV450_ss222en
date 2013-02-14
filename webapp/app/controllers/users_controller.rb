@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 	def index
 		if session[:loggedIn] == true
-			@users = User.all || not_found
+			@users = User.all 
 			
 		else 
 			flash[:notice] = "You are not logged in"
