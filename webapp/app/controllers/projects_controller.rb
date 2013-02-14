@@ -26,7 +26,7 @@ class ProjectsController < ApplicationController
 		@project = Project.new(params[:project])
 		#http://orion.lnu.se/pub/education/course/1DV450/VT13/sessions/F04.html#8
 		#@project.name = params[:name];
-		#@project.description = params[:description];
+		#@project.description = params[:description]; #Does not seem to work to get the parameters here
 		if @project.save
 		redirect_to projects_path
 		else 

@@ -11,7 +11,5 @@ class Project < ActiveRecord::Base
 			  :presence => {:message => ": Field seems to be missing"},
 			   :length => {:maximum => 250, :message => ": Field can not be longer than 250 characters"}
 			 
-		
-	
 			  
 end

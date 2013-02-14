@@ -13,7 +13,7 @@ class MinigoalsController < ApplicationController
 			@minigoal = Minigoal.find(params[:id])
 			@minigoalProject = @minigoal.project_id
 			@projectName = Project.find_by_id(@minigoalProject)
-			@minigoalStatus = @minigoal.status_id #Here you should instead find the name of the status where the minigoalStatus is ...
+			@minigoalStatus = @minigoal.status_id 
 			@status = Status.find_by_id(@minigoalStatus)
 			
 		else 
@@ -22,6 +22,7 @@ class MinigoalsController < ApplicationController
 	end
 	
 	def new
+		#Here I want access to the project that should contain the minigoal. 
 		if session[:loggedIn] == true	
 			@minigoal = Minigoal.new
 		else 

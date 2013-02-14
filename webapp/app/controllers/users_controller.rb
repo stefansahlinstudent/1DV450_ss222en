@@ -9,11 +9,9 @@ class UsersController < ApplicationController
 	end
 	
 	def new		
-		if session[:loggedIn] == true
+		
 			@user = User.new	
-		else 
-			flash[:notice] = "You are not logged in"
-		end		
+		
 	end
 	
 	def show 
