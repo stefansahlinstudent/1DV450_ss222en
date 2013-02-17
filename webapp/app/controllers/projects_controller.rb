@@ -24,13 +24,18 @@ class ProjectsController < ApplicationController
 	
 	def create
 		@project = Project.new(params[:project])
-		#http://orion.lnu.se/pub/education/course/1DV450/VT13/sessions/F04.html#8
-		#@project.name = params[:name];
-		#@project.description = params[:description]; #Does not seem to work to get the parameters here
+		@userId = session[:userId]
+		@user = User.find(@userId)
+		@project.owner_id = @userId
+		
+		
+		@project.users << @user
+		
+		
 		if @project.save
-		redirect_to projects_path
+			redirect_to projects_path
 		else 
-		render :action => "new"
+			render :action => "new"
 		end
 	end
 	
@@ -41,7 +46,8 @@ class ProjectsController < ApplicationController
 	end
 	
 	def new
-		if session[:loggedIn] == true	
+		if session[:loggedIn] == true
+		@userId = session[:userId]
 			@project = Project.new
 		else 
 				flash[:notice] = "You are not logged in"

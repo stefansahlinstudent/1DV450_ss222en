@@ -28,7 +28,7 @@
 		</table>
 	</div>
 	<br>
-	<p><%= link_to "Create Minigoal for project", new_minigoal_path(@project) %></p>
+	<p><%= link_to "Create Minigoal for project", new_project_minigoal_path(@project) %></p>
 	<p><%= link_to "Delete this project", @project, confirm: "You're about to delete this project", method: :delete%></p>
 	<p><%=link_to "Create new project", new_project_path %></p>
 	<br>
@@ -37,4 +37,7 @@
 		<%= submit_tag("Logout") %>
 	<% end %>
 	<% end %>
+	<div class="footer">
+		<p>@steffo 2013<p>
+	</div>
 </div>

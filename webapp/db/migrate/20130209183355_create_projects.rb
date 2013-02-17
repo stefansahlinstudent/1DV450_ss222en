@@ -4,6 +4,10 @@ class CreateProjects < ActiveRecord::Migration
 		
 	  t.string "name", :limit => 20	
 	  t.text :description 
+	  t.string :name
+	  t.date :start
+	  t.date :end
+	  t.integer :owner_id
 	  
       t.timestamps
     end

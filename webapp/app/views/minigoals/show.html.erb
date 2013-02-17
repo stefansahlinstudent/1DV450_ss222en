@@ -9,6 +9,9 @@
 	<p>Name: <%= @minigoal.name %>
 	<p>Belongs to the project: <%= @projectName.name %></p>
 	<p>Has the status: <%= @status.name %></p>
+	<p>Start date: <%= @minigoal.start %></p>
+	<p>End date: <%= @minigoal.end %></p>
+	<p>User of this project is: <%= @mgUser.first_name %> <%= @mgUser.last_name %></p>
 	<p><%= link_to "Edit this minigoal", edit_minigoal_path %></p>
 	<p><%= link_to "Delete this minigoal", @minigoal, confirm: "You're about to delete this minigoal", method: :delete%></p>
 	<br>
@@ -21,5 +24,8 @@
 	<%= form_tag(first_logout_path :method => "post", :action => "logout", :class => "myLogout") do%>
 		<%= submit_tag("Logout") %>
 	<% end %>
-	<% end %>	
+	<% end %>
+	<div class="footer">
+		<p>@steffo 2013<p>
+	</div>
 </div>

@@ -16,8 +16,9 @@
 		</ul>
 		</div>
 	<% end %>	
-
-	<%= form_for @minigoal do |f| %>
+	<%= @project.id %>
+	
+	<%= form_for([@project, @minigoal]) do |f| %>
 	<!-- Should maybe be a drop down list instead -->
 		
 	
@@ -25,6 +26,16 @@
 			<%= f.label :name %>
 			<%= f.text_field :name %>
 		</div>
+		
+		<!--<div class="text_field">
+			<%= f.label :start %> <p>(YYYY-MM-DD)</p>
+			<%= f.text_field :start %>
+		</div>
+		
+		<div class="text_field">
+			<%= f.label :end %> <p>(YYYY-MM-DD</p>
+			<%= f.text_field :end %>
+		</div>-->
 		
 		<div class="select_box">
 			<%= f.label :status_id %>
@@ -42,5 +53,8 @@
 	<% end %>
 	<% end %>
 	<!-- Might be a good idea to put in status in a select box-->
+	<div class="footer">
+		<p>@steffo 2013<p>
+	</div>
 </div>
 

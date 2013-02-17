@@ -11,6 +11,8 @@ class FirstController < ApplicationController
 		@user = User.where("email = ? AND password = ?", @email, @password)
 		
 		
+		
+		
 		if @user.size > 0 
 			@something = @user.first.id
 			@firstName = @user.first.first_name
@@ -24,6 +26,8 @@ class FirstController < ApplicationController
 			
 		end
 		
+		
+		
 	end
 	
 	def logout
@@ -34,8 +38,6 @@ class FirstController < ApplicationController
 		
 	end
 	
-	def test
 	
-	end
 	
 end

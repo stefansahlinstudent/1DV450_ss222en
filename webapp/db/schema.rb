@@ -11,26 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130211140400) do
+ActiveRecord::Schema.define(:version => 20130209193105) do
 
   create_table "minigoals", :force => true do |t|
     t.integer  "project_id"
     t.integer  "status_id"
+    t.integer  "user_id"
     t.string   "name"
+    t.date     "start"
+    t.date     "end"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  create_table "project_minigoals", :id => false, :force => true do |t|
-    t.integer "project_id"
-    t.integer "minigoal_id"
-  end
-
   create_table "projects", :force => true do |t|
-    t.string   "name",        :limit => 20
+    t.string   "name"
     t.text     "description"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.date     "start"
+    t.date     "end"
+    t.integer  "owner_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "projects_users", :id => false, :force => true do |t|

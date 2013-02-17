@@ -1,0 +1,30 @@
+<div class="container">
+	<div class="Title">
+		<h1>Minigoals for this project</h1>
+	</div>
+	<% if flash[:notice] %>
+		<h2 class="error"><%= flash[:notice] %></h2>
+		<%= link_to "Back to log in page! ", first_logout_path %>		
+	<% else %>	
+	<table>
+		<% @minigoals.each do |minigoal| %>
+			<tr>
+				<td><%= link_to minigoal.name, minigoal %></td>
+				<td><%= link_to "Edit", edit_minigoal_path(minigoal) %></td>	
+				<td><%= link_to "Delete", minigoal, confirm: "You're about to delete this minigoal", method: :delete%></td>
+			</tr>	
+		<% end %>
+	<table>
+	<br>
+
+	<%= link_to "Create new minigoal", new_minigoal_path %>
+	<br>
+	<%= link_to "Go to the all projects page", projects_path %>
+	<br>
+	<%= link_to "Go to the all users page", users_path %>
+	<br>
+	<%= form_tag(first_logout_path :method => "post", :action => "logout", :class => "myLogout") do%>
+		<%= submit_tag("Logout") %>
+	<% end %>
+	<% end %>
+<div>

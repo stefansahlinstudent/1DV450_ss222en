@@ -1,11 +1,13 @@
 class User < ActiveRecord::Base
+
+	
 	has_and_belongs_to_many :projects
+	has_many :minigoals
 	
 	validates :first_name, 
 			  :presence => {:message => "First name seems to be missing"},
 			  :length => {:maximum => 20, :message => "First name of the user can not be longer than 20 characters"}
-			  
-			  
+			  			  
 	validates :last_name, 
 			  :presence => {:message => "Last name seems to be missing"},
 			  :length => {:maximum => 40, :message => "Last name of the user can not be longer than 20 characters"}

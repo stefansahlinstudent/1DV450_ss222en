@@ -16,7 +16,7 @@
 		<% end %>
 		</ul>
 		</div>
-	<% end %>	
+	<% end %>	<% @userId %>
 
 	<%= form_for @project do |f| %>
 		<div class="text_field">
@@ -40,4 +40,7 @@
 		<%= submit_tag("Logout") %>
 	<% end %>
 	<% end %>
+	<div class="footer">
+		<p>@steffo 2013<p>
+	</div>
 </div>
