@@ -6039,8 +6039,12 @@ a.badge:hover {
 }
 
 /* Stefans own styles */
-.users_links a{
-	color: green;
+.users_links {
+	background:#E0FFFF;
+}
+
+.projects_links{
+	background:#E0FFFF;
 }
 
 .Title {
@@ -6051,12 +6055,16 @@ a.badge:hover {
 .footer {
 	background: black;
 	color: white;
+	/*position: absolute; 
+	bottom: 0;*/
+	width: 100%
 }
 
 .container {
 	width: 80%;
 	border: 1 px solid black;
 	height: 1000px;
+	
 }
 
 .errorlist{
@@ -6071,6 +6079,10 @@ a.badge:hover {
 
 .error{
 	color: red;
+}
+
+.allowedMembers{
+	background: #F0F8FF;
 }
 
 #notauser {

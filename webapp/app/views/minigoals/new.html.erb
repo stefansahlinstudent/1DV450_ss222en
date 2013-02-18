@@ -16,11 +16,17 @@
 		</ul>
 		</div>
 	<% end %>	
-	<%= @project.id %>
-	
+	<!--<%= @project.id %>-->
+	<div class="allowedMembers">
+		<h3>The following members have authority to create this minigoal</h3>
+		<% @prusers.each do |pruser| %>
+			<p><%=pruser.first_name %>	<%=pruser.last_name %></p>
+		<%end %>
+	</div>
+	<br>
+	<br>
+	<% if @validUser == true %>
 	<%= form_for([@project, @minigoal]) do |f| %>
-	<!-- Should maybe be a drop down list instead -->
-		
 	
 		<div class="text_field">
 			<%= f.label :name %>
@@ -45,13 +51,24 @@
 		<div class="submit">
 			<%= f.submit "Create minigoal" %>
 		</div>
+	
+	
+	<% end %>
+	
+	
 	<br>
+	
 	<br>
 	<%= form_tag(first_logout_path :method => "post", :action => "logout", :class => "myLogout") do%>
 		<%= submit_tag("Logout") %>
 	<% end %>
+	<% else %>
+	<p class="error">That means, you should not be here you naughty boy!!!</p>
 	<% end %>
+	<br>
+	<%= link_to "Go to the all users page", users_path %>
 	<% end %>
+	
 	<!-- Might be a good idea to put in status in a select box-->
 	<div class="footer">
 		<p>@steffo 2013<p>

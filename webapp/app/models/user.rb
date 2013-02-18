@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
-
+	
+	#http://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html#method-i-has_secure_password
+	
+	
 	
 	has_and_belongs_to_many :projects
 	has_many :minigoals

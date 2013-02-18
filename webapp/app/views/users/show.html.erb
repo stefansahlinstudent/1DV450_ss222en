@@ -6,25 +6,24 @@
 		<h2 class="error"><%= flash[:notice] %></h2>
 		<%= link_to "Back to log in page! ", first_logout_path %>
 	<% else %>
-		<p>Session Id: <%= @sessionId %></p>
-		<p>User Id: <%= @userId %></p>
 	
 		<p>First Name of the user is: <%= @userfname %></p>
 		<p>Last Name of the user is: <%= @userlname %></p>
 		<p>Email of the user is: <%= @email %></p>		
 
 
-	<h3>Projects made by this user</h3>
-	<% if @uprojects.size < 1 %>
-		<p> This user does not have any projects yet </p>
-	<% end %>
-	<% @uprojects.each do |uproject| %>
-		<%= link_to uproject.name, project_path(uproject) %> <br>
-	<% end %>
-	
+	<h3>Projects that includes this user</h3>
+	<div class = "projects_links">
+		<% if @uprojects.size < 1 %>
+			<p> This user does not have any projects yet </p>
+		<% end %>
+		<% @uprojects.each do |uproject| %>
+			<%= link_to uproject.name, project_path(uproject) %> <br>
+		<% end %>
+	</div>
 	<br>
 	
-	<p><%= link_to "Back to the All users page", users_path %></p>
+	<p><%= link_to "Back to the all users page", users_path %></p>
 	
 	<% if @sessionId == @userId %>
 		<p><%= link_to "Delete yourself", @user, confirm: "You're about to delete yourself", method: :delete%></p>

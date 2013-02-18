@@ -9,7 +9,10 @@ class MinigoalsController < ApplicationController
 	end
 	
 	def show
-		if session[:loggedIn] == true	
+		if session[:loggedIn] == true
+			@sessionUserId = session[:userId]		
+			@currentUser = User.find(@sessionUserId)
+			@currentUserId = @currentUser.id
 			@minigoal = Minigoal.find(params[:id])
 			@minigoalProject = @minigoal.project_id
 			@projectName = Project.find_by_id(@minigoalProject)
@@ -25,10 +28,17 @@ class MinigoalsController < ApplicationController
 	
 	def new
 		#Here I want access to the project that should contain the minigoal.
-			
-		@project = Project.find(params[:project_id])
-		if session[:loggedIn] == true	
-			@minigoal = Minigoal.new
+		if  session[:loggedIn] == true			
+			@project = Project.find(params[:project_id])
+			@sessionId = session[:userId]
+			@prusers = @project.users
+			@validUser = false
+			@prusers.each do |pruser|		
+				if pruser.id == @sessionId
+					@validUser = true
+				end
+			end 			
+				@minigoal = Minigoal.new
 		else 
 			flash[:notice] = "You are not logged in"
 		end
@@ -40,7 +50,6 @@ class MinigoalsController < ApplicationController
 		@project = Project.find(params[:project_id])	
 		
 		@minigoal.project = @project
-		# loop to check the users for the project. If the person is not among the users he can not create a minigoal
 		@minigoal.user_id = session[:userId] 
 		if @minigoal.save
 			redirect_to minigoals_path			
@@ -66,7 +75,7 @@ class MinigoalsController < ApplicationController
 			@minigoal = Minigoal.find(params[:id])	
 			@minigoalUserId = @minigoal.user_id
 			if @minigoalUserId != @sessionId
-				flash[:notice] = "You do not have authority"
+				flash[:notice] = "You do not have authority to edit this minigoal"
 			end
 		else 
 			flash[:notice] = "You are not logged in"

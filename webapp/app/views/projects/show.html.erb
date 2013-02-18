@@ -11,7 +11,9 @@
 	
 	<br>
 	<p>Name of the project: <%= @projectName %></p>
-	<p>Description of the project: <%= @projectDescription %></p>
+	<p>Description of the project: <%= @projectDescription %></p
+	<p>Owner of this project: <%= @prowner.first_name %> <%= @prowner.last_name %></p>
+	
 	
 	<div id ="mgBox">
 		<h3>The minigoals that the project has:</h3>
@@ -29,7 +31,9 @@
 	</div>
 	<br>
 	<p><%= link_to "Create Minigoal for project", new_project_minigoal_path(@project) %></p>
-	<p><%= link_to "Delete this project", @project, confirm: "You're about to delete this project", method: :delete%></p>
+	<% if @userId == @project.owner_id %>
+		<p><%= link_to "Delete this project", @project, confirm: "You're about to delete this project", method: :delete%></p>
+	<% end %>
 	<p><%=link_to "Create new project", new_project_path %></p>
 	<br>
 	<%= form_tag(first_logout_path :method => "post", :action => "logout", :class => "myLogout") do%>

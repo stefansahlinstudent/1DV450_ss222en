@@ -1,4 +1,8 @@
 Webapp::Application.routes.draw do
+  get "errors/error_404"
+
+  get "errors/error_500"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -14,6 +18,7 @@ Webapp::Application.routes.draw do
   match '/first/login' => 'first#login', :as => :first_login 
   match '/first/logout' => 'first#logout', :as => :first_logout 
   match '/users/search' => 'users#search', :as => :users_search 
+  match '/projects/userchange' => 'projects#userchange', :as => :projects_userchange
 	
 	resources :projects do 
 	 resources :minigoals

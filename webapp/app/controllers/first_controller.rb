@@ -4,6 +4,9 @@ class FirstController < ApplicationController
 		@sessionId = session[:userId]
 	end
 	
+	
+	 
+	
 	def login
 		
 		@email = params[:email]
@@ -25,10 +28,10 @@ class FirstController < ApplicationController
 			redirect_to(:action => 'index')
 			
 		end
-		
-		
+				
 		
 	end
+	
 	
 	def logout
 		#session id deleted here

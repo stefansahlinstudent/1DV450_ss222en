@@ -9,7 +9,13 @@ class Project < ActiveRecord::Base
 	
 	validates :description, 
 			  :presence => {:message => ": Field seems to be missing"},
-			   :length => {:maximum => 250, :message => ": Field can not be longer than 250 characters"}
+			  :length => {:maximum => 250, :message => ": Field can not be longer than 250 characters"}
+			  
+	validates :start, 
+			  :presence => {:message => ": You must fill in the start date right"}
+			  
+	validates :end, 
+			  :presence => {:message => ": You must fill in the end date right"}
 			 
 			  
 end

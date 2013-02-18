@@ -37,10 +37,13 @@ class UsersController < ApplicationController
 	def search
 		if session[:loggedIn] == true
 			@searchPhrase =  params[:search]
-			#stolen from google, matches everything that has the search phrase in it
 			@users= User.find(:all, :conditions=> ["first_name like :eq", {:eq => "%" + @searchPhrase + "%"}])		
-			@size = @users.size 
-			@first = @users.first.first_name
+			@size = @users.size
+			
+			if @size > 0
+				@first = @users.first.first_name
+			end
+			
 		else 
 			flash[:notice] = "You are not logged in"
 		end			
