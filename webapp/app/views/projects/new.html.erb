@@ -37,6 +37,11 @@
 			<%= f.label :end %> <p> YYYY-MM-DD </p>
 			<%= f.text_field :end %>
 		</div>
+		
+		<% @nrusers.times do |i| %>
+		  <%= label_tag @users[i].first_name %>:
+		  <%= check_box_tag "@users[#{i}]" %> <br />
+		<% end %>
 				
 		
 		<div class="submit">

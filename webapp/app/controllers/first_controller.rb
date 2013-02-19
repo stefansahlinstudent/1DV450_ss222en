@@ -7,14 +7,10 @@ class FirstController < ApplicationController
 	
 	 
 	
-	def login
-		
+	def login		
 		@email = params[:email]
 		@password = params[:password]
 		@user = User.where("email = ? AND password = ?", @email, @password)
-		
-		
-		
 		
 		if @user.size > 0 
 			@something = @user.first.id
@@ -25,13 +21,20 @@ class FirstController < ApplicationController
 			@sessionLogin = session[:loggedIn]
 			@sessionId = session[:userId]	
 		else 		
-			#puts "login failed"
 			redirect_to(:action => 'index')
-			
-		end
-				
-		
+		end		
 	end
+	
+	#def login
+	#  user = User.find_by_email(params[:email])
+	 # if user && user.authenticate(params[:password])
+		#session[:user_id] = user.id
+		#redirect_to root_url, :notice => "Logged in!"
+	  #else
+		#flash.now.alert = "Invalid email or password"
+		#render "new"
+	  #end
+	#end
 	
 	
 	def logout
