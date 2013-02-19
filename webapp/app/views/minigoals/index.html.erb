@@ -6,7 +6,7 @@
 		<h2 class="error"><%= flash[:notice] %></h2>
 		<%= link_to "Back to log in page! ", first_logout_path %>		
 	<% else %>	
-	<h3> The following users are registered in this application </h3>
+	<h3> The following minigoals have been created </h3>
 	<div class="users_links">
 	<table>
 		<% @minigoals.each do |minigoal| %>

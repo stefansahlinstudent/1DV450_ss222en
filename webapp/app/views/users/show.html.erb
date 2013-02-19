@@ -26,6 +26,7 @@
 	<p><%= link_to "Back to the all users page", users_path %></p>
 	
 	<% if @sessionId == @userId %>
+		<p><%= link_to "Edit yourself", edit_user_path %></p>
 		<p><%= link_to "Delete yourself", @user, confirm: "You're about to delete yourself", method: :delete%></p>
 	<% end %>
 	<%= form_tag(first_logout_path :method => "post", :action => "logout", :class => "myLogout") do%>

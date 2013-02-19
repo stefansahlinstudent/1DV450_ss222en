@@ -8,8 +8,8 @@
 	<% else %>
 
 	<%= link_to "Back to users", user_path(@user) %>
-	<p>SessionId: <%= @sessionId %></p>
-	<p>UserId: <%= @userId %></p>
+	<!--<p>SessionId: <%= @sessionId %></p>
+	<p>UserId: <%= @userId %></p>-->
 	<% if @sessionId != @userId %>
 		<p>You do not have authority to edit this page!</p>
 	<% else %>	
