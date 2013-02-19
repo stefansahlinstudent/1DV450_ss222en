@@ -27,6 +27,8 @@ Webapp::Application.routes.draw do
 	resources :first
 	resources :minigoals
 	
+	#map.resources :projects, :collection => { :userchange => :put}
+	
   
   #   resources :products
 

@@ -2,9 +2,7 @@ class ProjectsController < ApplicationController
 	
 	#Den går automatiskt till index först när /projects anropas (resources)
 	def index
-		if session[:loggedIn] == true
-			
-			
+		if session[:loggedIn] == true						
 			@projects = Project.all
 		else 
 			flash[:notice] = "You are not logged in"
@@ -112,6 +110,8 @@ class ProjectsController < ApplicationController
 		#lite kod
 		
 		@project = Project.find(params[:id])
+		
+		params[:User]
 		
 		if @project.update_attributes(params[:project])
 			redirect_to projects_path

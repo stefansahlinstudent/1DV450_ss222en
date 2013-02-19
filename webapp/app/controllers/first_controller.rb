@@ -25,6 +25,7 @@ class FirstController < ApplicationController
 			@sessionLogin = session[:loggedIn]
 			@sessionId = session[:userId]	
 		else 		
+			#puts "login failed"
 			redirect_to(:action => 'index')
 			
 		end
