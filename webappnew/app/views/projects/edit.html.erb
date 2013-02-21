@@ -33,15 +33,6 @@
 				<%= f.text_field :end %>
 			</div>
 			
-			<h3> Choose who you want to have authority to this project </h3>
-			<% User.all.each do |u| %>
-				<%= label_tag u.first_name %>
-				<%= check_box_tag u.id %> <br>
-				<!-- <%= check_box_tag u.id, 1, true %> <br> -->
-			<% end %>
-			<br>
-			
-			
 			<!-- Should be a select box here where you can chose the minigoal_id -->
 			<div class="submit">
 				<%= f.submit "Save changes" %>

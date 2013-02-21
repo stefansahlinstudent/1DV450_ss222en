@@ -34,13 +34,7 @@
 		</table>
 	</div>
 	<br>
-	<%if @validUser == true %>
-		<p><%= link_to "Create Minigoal for project", new_project_minigoal_path(@project) %></p>
-	<% end %>
-	<!--<%= @projectUserId %>
-	<%= @userId %>
-	<%= @validUser %>-->
-	
+	<p><%= link_to "Create Minigoal for project", new_project_minigoal_path(@project) %></p>
 	<% if @userId == @project.owner_id %>
 		<p><%= link_to "Edit this project", edit_project_path %></p>
 		<p><%= link_to "Delete this project", @project, confirm: "You're about to delete this project", method: :delete%></p>

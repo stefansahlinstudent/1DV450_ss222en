@@ -1,0 +1,20 @@
+<div class="container">
+	<div class="Title">
+		<h1>Welcome! <%= @firstName%> </h1>
+	</div>
+
+	<%= link_to "Go to users page", users_path %>
+	<!--  Should go to the users own page instead -->
+	<br>
+	<br>
+	<%= form_tag(first_logout_path :method => "post", :action => "logout", :class => "myLogout") do%>
+		<%= submit_tag("Logout") %>
+	<% end %>
+	<div class="footer">
+		<p>@steffo 2013<p>
+	</div>
+</div>
+
+
+
+

@@ -11,56 +11,29 @@ class ProjectsController < ApplicationController
 	
 	def show 
 		if session[:loggedIn] == true	
-			@validUser = false
 			@userId = session[:userId]
-			@project = Project.find(params[:id])
-			@projectUserId = @project.owner_id
+			 project = Project.find(params[:id])		
+			@prusers = project.users
+			
+			
+			@project = project
 			@prownerId = @project.owner_id
-			@prowner = User.find(@userId)
-			
-			if @projectUserId == @userId
-				@validUser = true
-			end
-			
-			@prusers = @project.users
-			
-			@prusers.each do |pruser|		
-				if pruser.id == @userId
-					@validUser = true
-				end
-			end 
-			
-			
-			
+			@prowner = User.find(@prownerId )
 			@pMinigoals = @project.minigoals
-			@projectName = @project.name
-			@projectDescription = @project.description
-			
-			
-			
+			@projectName = project.name
+			@projectDescription = project.description
 		else 
 			flash[:notice] = "You are not logged in"
 		end
 	end
 	
 	def create
-		
-		#flash[:notice] = params
-		
+				
 		@project = Project.new(params[:project])
 		@userId = session[:userId]
 		@user = User.find(@userId)
 		@project.owner_id = @userId
-		
-		User.all.each do |u|
-			flash[:notice] = params[u.id]
-			if  params[u.id.to_s]
-				@pruser = User.find(u.id)
-				@project.users << @pruser
-				
-			end
-		end
-		
+			
 		@project.users << @user	
 		if @project.save
 			redirect_to projects_path
@@ -94,24 +67,27 @@ class ProjectsController < ApplicationController
 	
 	def edit
 		if session[:loggedIn] == true	
-			#flash[:notice] = "hejsan"
 			@sessionId = session[:userId]
 			@validUser = false
 			@project = Project.find(params[:id])
 			@sessionId = session[:userId]
 			@projectUserId = @project.owner_id
-			@prowner = User.find(@project.owner_id)				
+			@prowner = User.find(@project.owner_id)
 			
 			if @prowner.id == @sessionId
 				@validUser = true
 			end
-			@prusers = @project.users
+			#@prusers = @project.users
 			#@validUser = false
-			@prusers.each do |pruser|		
-				if pruser.id == @sessionId
-					@validUser = true
-				end
-			end 
+			#@prusers.each do |pruser|		
+			#	if pruser.id == @sessionId
+			#		@validUser = true
+			#	end
+			#end 
+			
+			#if @validUser == false
+			#	flash[:notice] = "You do not have user authority"
+			#end
 	
 			
 		else 
@@ -121,23 +97,8 @@ class ProjectsController < ApplicationController
 	
 	def update
 		
-		@userId = session[:userId]
 		@project = Project.find(params[:id])
-		@user = User.find(@userId)
 		
-		User.all.each do |u|
-		
-				@pruser = User.find(u.id)
-				@project.users.delete(@pruser)
-				#flash[:notice] = params[u.id]
-				if  params[u.id.to_s]
-					#flash[:notice] = "testing"
-					#@project.users.delete(@pruser)
-					@project.users << @pruser
-					
-				end
-			end
-		@project.users << @user	
 		if @project.update_attributes(params[:project])
 			redirect_to projects_path
 		else

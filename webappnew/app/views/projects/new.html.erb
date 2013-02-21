@@ -3,7 +3,7 @@
 		<h1>Create Project</h1>
 	</div>
 	<% if flash[:notice] %>
-		<h2 class="error"><%=h flash[:notice] %></h2>
+		<h2 class="error"><%= flash[:notice] %></h2>
 		<%= link_to "Back to log in page! ", first_logout_path %>		
 	<% else %>
 
@@ -38,16 +38,17 @@
 			<%= f.text_field :end %>
 		</div>
 		
-		<h3> Choose who you want to have authority to this project </h3>
-		<% User.all.each do |u| %>
-			<%= label_tag u.first_name %>
-			<%= check_box_tag u.id %> <br>
+		<% @nrusers.times do |i| %>
+		  <%= label_tag @users[i].first_name %>:
+		  <%= check_box_tag "@users[#{i}]" %> <br />
 		<% end %>
 				
-		<br>
+		
 		<div class="submit">
 			<%= f.submit "create project" %>
 		</div>
+		
+		
 		
 		
 		
@@ -63,6 +64,6 @@
 	<% end %>
 	<% end %>
 	<div class="footer">
-		<p>steffo 2013</p>
+		<p>@steffo 2013<p>
 	</div>
 </div>
