@@ -7,34 +7,34 @@ class FirstController < ApplicationController
 	
 	 
 	
-	def login		
-		@email = params[:email]
-		@password = params[:password]
-		@user = User.where("email = ? AND password = ?", @email, @password)
+	#def login		
+		#@email = params[:email]
+		#@password = params[:password]
+		#@user = User.where("email = ? AND password = ?", @email, @password)
 		
-		if @user.size > 0 
-			@something = @user.first.id
-			@firstName = @user.first.first_name
-			session[:userId] = @something
-			session[:loggedIn] = true
-			
-			@sessionLogin = session[:loggedIn]
-			@sessionId = session[:userId]	
-		else 		
-			redirect_to(:action => 'index')
-		end		
-	end
-	
-	#def login
-	#  user = User.find_by_email(params[:email])
-	 # if user && user.authenticate(params[:password])
-		#session[:user_id] = user.id
-		#redirect_to root_url, :notice => "Logged in!"
-	  #else
-		#flash.now.alert = "Invalid email or password"
-		#render "new"
-	  #end
+		#if @user.size > 0 
+		#	@something = @user.first.id
+		#	@firstName = @user.first.first_name
+		#	session[:userId] = @something
+		#	session[:loggedIn] = true
+		#	
+		#	@sessionLogin = session[:loggedIn]
+		#	@sessionId = session[:userId]	
+		#else 		
+		#	redirect_to(:action => 'index')
+		#end		
 	#end
+	
+	def login
+	  user = User.find_by_email(params[:email])
+	  if user && user.authenticate(params[:password])
+		session[:user_id] = user.id
+		redirect_to root_url, :notice => "Logged in!"
+	  else
+		flash.now.alert = "Invalid email or password"
+		render "new"
+	  end
+	end
 	
 	
 	def logout
