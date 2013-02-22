@@ -1,5 +1,3 @@
-
-
 <div class="container">	
 	<div class="Title">
 		<h1>Page to show specific Project</h1>
@@ -8,17 +6,17 @@
 		<h2 class="error"><%= flash[:notice] %></h2>
 		<%= link_to "Back to log in page! ", first_logout_path %>		
 	<% else %>
-	
+
 	<br>
-	
-	
-	
+
+
+
 	<p>Name of the project: <%= @projectName %></p>
 	<p>Description of the project: <%= @projectDescription %></p
 	<p>Owner of this project: <%= @prowner.first_name %> <%= @prowner.last_name %></p>
-	
-	
-	
+
+
+
 	<div id ="mgBox">
 		<h3>The minigoals that the project has:</h3>
 		<% if @pMinigoals.size < 1 %>
@@ -40,7 +38,7 @@
 	<!--<%= @projectUserId %>
 	<%= @userId %>
 	<%= @validUser %>-->
-	
+
 	<% if @userId == @project.owner_id %>
 		<p><%= link_to "Edit this project", edit_project_path %></p>
 		<p><%= link_to "Delete this project", @project, confirm: "You're about to delete this project", method: :delete%></p>

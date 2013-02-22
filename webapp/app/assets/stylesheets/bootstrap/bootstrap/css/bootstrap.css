@@ -6085,6 +6085,18 @@ a.badge:hover {
 	background: #F0F8FF;
 }
 
+.invisible{
+	visibility: none;
+}
+
+.sizeHelper{
+	height:550px;
+}
+
+.sizeHelper2{
+	/*height:50px;*/
+}
+
 #notauser {
 	background: grey;
 	border: 1px solid black;

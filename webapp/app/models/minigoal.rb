@@ -7,6 +7,6 @@ class Minigoal < ActiveRecord::Base
 	validates :name, 
 			  :presence => {:message => ": Field seems to be missing"}
 			  
-			  #The other fields should be here as well
+	validates :name, :uniqueness => true
 			  
 end

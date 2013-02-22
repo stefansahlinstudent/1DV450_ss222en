@@ -1,4 +1,5 @@
-<div class="container">
+<div class="container
+<div class="sizeHelper2">
 	<div class="Title">
 		<h1>All projects </h1>
 	</div>
@@ -22,13 +23,14 @@
 	<%= link_to "Create new project", new_project_path %>
 	<br>
 	<%= link_to "Back to the users page", users_path %>
-	
-	
+
+
 	<%= form_tag(first_logout_path :method => "post", :action => "logout", :class => "myLogout") do%>
 	<!-- Access to action in form_tag check it. -->
 		<%= submit_tag("Logout") %>
 	<%end %>
 	<% end %>
+	</div>
 	<div class="footer">
 		<p>@steffo 2013<p>
 	</div>

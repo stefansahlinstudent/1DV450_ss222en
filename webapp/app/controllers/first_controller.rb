@@ -28,10 +28,13 @@ class FirstController < ApplicationController
 	def login
 	  user = User.find_by_email(params[:email])
 	  if user && user.authenticate(params[:password])
-		session[:user_id] = user.id
+	  
+		session[:userId] = user.id
 		session[:loggedIn] = true
-		redirect_to root_url, :notice => "Logged in!"
+		@user = user
+		#redirect_to root_url, :notice => "Logged in!"
 	  else
+		@loginResult = false
 		flash.now.alert = "Invalid email or password"
 		render "index"
 	  end

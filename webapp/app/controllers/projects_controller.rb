@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-	
+
 	#Den går automatiskt till index först när /projects anropas (resources)
 	def index
 		if session[:loggedIn] == true						
@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
 			flash[:notice] = "You are not logged in"
 		end
 	end
-	
+
 	def show 
 		if session[:loggedIn] == true	
 			@validUser = false
@@ -16,51 +16,51 @@ class ProjectsController < ApplicationController
 			@project = Project.find(params[:id])
 			@projectUserId = @project.owner_id
 			@prownerId = @project.owner_id
-			@prowner = User.find(@userId)
-			
+			@prowner = User.find(@projectUserId)
+
 			if @projectUserId == @userId
 				@validUser = true
 			end
-			
+
 			@prusers = @project.users
-			
+
 			@prusers.each do |pruser|		
 				if pruser.id == @userId
 					@validUser = true
 				end
 			end 
-			
-			
-			
+
+
+
 			@pMinigoals = @project.minigoals
 			@projectName = @project.name
 			@projectDescription = @project.description
-			
-			
-			
+
+
+
 		else 
 			flash[:notice] = "You are not logged in"
 		end
 	end
-	
+
 	def create
-		
+
 		#flash[:notice] = params
-		
+
 		@project = Project.new(params[:project])
 		@userId = session[:userId]
 		@user = User.find(@userId)
 		@project.owner_id = @userId
-		
+
 		User.all.each do |u|
 			flash[:notice] = params[u.id]
 			if  params[u.id.to_s]
 				@pruser = User.find(u.id)
 				@project.users << @pruser
-				
+
 			end
 		end
-		
+
 		@project.users << @user	
 		if @project.save
 			redirect_to projects_path
@@ -68,7 +68,7 @@ class ProjectsController < ApplicationController
 			render :action => "new"
 		end
 	end
-	
+
 	def destroy
 		@sessionId = session[:userId]
 		@project = Project.find(params[:id])
@@ -79,7 +79,7 @@ class ProjectsController < ApplicationController
 			redirect_to projects_url
 		end
 	end
-	
+
 	def new
 		if session[:loggedIn] == true
 		@users = User.all
@@ -91,7 +91,7 @@ class ProjectsController < ApplicationController
 				flash[:notice] = "You are not logged in"
 		end
 	end
-	
+
 	def edit
 		if session[:loggedIn] == true	
 			#flash[:notice] = "hejsan"
@@ -101,7 +101,7 @@ class ProjectsController < ApplicationController
 			@sessionId = session[:userId]
 			@projectUserId = @project.owner_id
 			@prowner = User.find(@project.owner_id)				
-			
+
 			if @prowner.id == @sessionId
 				@validUser = true
 			end
@@ -112,21 +112,21 @@ class ProjectsController < ApplicationController
 					@validUser = true
 				end
 			end 
-	
-			
+
+
 		else 
 			flash[:notice] = "You are not logged in"
 		end
 	end	
-	
+
 	def update
-		
+
 		@userId = session[:userId]
 		@project = Project.find(params[:id])
 		@user = User.find(@userId)
-		
+
 		User.all.each do |u|
-		
+
 				@pruser = User.find(u.id)
 				@project.users.delete(@pruser)
 				#flash[:notice] = params[u.id]
@@ -134,7 +134,7 @@ class ProjectsController < ApplicationController
 					#flash[:notice] = "testing"
 					#@project.users.delete(@pruser)
 					@project.users << @pruser
-					
+
 				end
 			end
 		@project.users << @user	
@@ -144,14 +144,14 @@ class ProjectsController < ApplicationController
 			render :action => "edit"
 		end
 	end
-	
+
 	def userchange
 		#lite kod
-		
+
 		@project = Project.find(params[:id])
-		
+
 		params[:User]
-		
+
 		if @project.update_attributes(params[:project])
 			redirect_to projects_path
 		else
