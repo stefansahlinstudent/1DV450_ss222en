@@ -51,13 +51,5 @@ class MemberHandler{
 		return false;
 	}
 	
-	public function countRows(){
-		$stmt = $this->m_mysqli->prepare("SELECT * FROM mymembers");
-		$stmt->execute();
-		$stmt->store_result();
-		$result = $stmt->num_rows;
-		
-		return $result;
-	}
-	   
+	
 }
